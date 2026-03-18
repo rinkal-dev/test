@@ -24,8 +24,10 @@ export class LocalStorageService implements IStorageService {
     this.uploadDir = storageConfig.local.uploadDir;
     this.baseUrl = storageConfig.local.baseUrl;
 
-    // Ensure upload directory exists
-    this.ensureDirectoryExists(this.uploadDir);
+    // Ensure upload directory exists (skip on Vercel — read-only filesystem)
+    if (!process.env.VERCEL) {
+      this.ensureDirectoryExists(this.uploadDir);
+    }
   }
 
   private ensureDirectoryExists(dir: string): void {
