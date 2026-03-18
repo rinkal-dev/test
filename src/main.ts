@@ -116,7 +116,14 @@ async function bootstrap() {
     .addServer(getEnvironmentData('APP_URL'))
     .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('api/v1/documentation', app, document);
+  const swaggerCdnOptions = {
+    customCssUrl: 'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.0/swagger-ui.css',
+    customJs: [
+      'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.0/swagger-ui-bundle.js',
+      'https://cdn.jsdelivr.net/npm/swagger-ui-dist@5.11.0/swagger-ui-standalone-preset.js',
+    ],
+  };
+  SwaggerModule.setup('api/v1/documentation', app, document, swaggerCdnOptions);
   // Swagger JSON endpoints for API client generation (Orval)
   app.use('/swagger.json', (req, res) => {
     res.json(document);
@@ -142,7 +149,7 @@ async function bootstrap() {
     deepScanRoutes: true,
   };
   const documentAdmin = SwaggerModule.createDocument(app, config, option);
-  SwaggerModule.setup('api/v1/admin/documentation', app, documentAdmin);
+  SwaggerModule.setup('api/v1/admin/documentation', app, documentAdmin, swaggerCdnOptions);
   app.use('/admin/swagger.json', (req, res) => {
     res.json(documentAdmin);
   });
