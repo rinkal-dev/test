@@ -174,7 +174,10 @@ async function bootstrap() {
     console.log(`Logs available at: /api/v1/admin/logs (admin auth required)`);
   }
 }
-bootstrap();
+const bootstrapPromise = bootstrap();
 
-// Export the Express server for Vercel serverless
-export default server;
+// Export a handler that waits for NestJS to initialize before handling requests
+export default async (req, res) => {
+  await bootstrapPromise;
+  server(req, res);
+};
