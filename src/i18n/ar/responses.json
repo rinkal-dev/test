@@ -1,0 +1,22 @@
+{
+    "locale_updated": "Your language has been updated successfully.",
+    "mobile_updated": "Your mobile number has been updated successfully.",
+    "password_updated": "Your password has been updated successfully.",
+    "email_updated": "Your email has been updated successfully.",
+    "not_found": "not found.",
+    "created": "has been created successfully.",
+    "updated": "has been updated successfully.",
+    "deleted": "has been deleted successfully.",
+    "internal_server_error": "Internal server error.",
+    "list": "list has been retrieved successfully.",
+    "details": "details has been retrieved successfully.",
+    "already_exist": "already exist.",
+    "not_selected": "is not selected.",
+    "error_occurred": "Some error occurred while adding or retrieving.",
+    "update_role_error": "Some error occurred while updating roles.",
+    "status_change": "status has been changed successfully.",
+    "status_not_change": "status has not been changed.",
+    "ios_version_error": "You can only update the version of IOS above the current one.",
+    "android_version_error": "You can only update the version of Android above the current one."
+
+}

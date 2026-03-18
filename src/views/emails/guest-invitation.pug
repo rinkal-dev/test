@@ -1,0 +1,130 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title You're Invited - #{weddingName}
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- DestaPay Branding Header
+          table(width="600" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;")
+            tr
+              td(align="center" style="padding: 20px 0;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 50px; max-width: 200px;")
+                else
+                  h2(style="margin: 0; font-size: 24px; font-weight: 700; color: #8B5A2B; letter-spacing: 2px;") DESTAPAY
+                  p(style="margin: 5px 0 0 0; font-size: 11px; color: #999; letter-spacing: 1px;") DESTINATION WEDDING BOOKINGS
+
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);")
+            //- Header
+            tr
+              td(style="background-color: #667eea; padding: 40px 30px; text-align: center;")
+                p(style="font-size: 48px; margin: 0 0 15px 0; color: #ffffff;") &#x1F48D;
+                h1(style="color: #ffffff; margin: 0; font-size: 26px; font-weight: 600;") You're Invited!
+                p(style="color: rgba(255,255,255,0.9); margin: 15px 0 0 0; font-size: 18px;") #{brideName} & #{groomName}'s Wedding
+
+            //- Body
+            tr
+              td(style="padding: 30px;")
+                p(style="color: #333333; font-size: 18px; margin: 0 0 20px 0;") Dear #{guestName},
+
+                p(style="color: #555555; font-size: 15px; line-height: 1.6; margin: 0 0 25px 0;") We are delighted to invite you to celebrate the wedding of #{brideName} and #{groomName}. Your presence would mean the world to us on this special occasion.
+
+                if customMessage
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                    tr
+                      td(style="background-color: #f8f9fa; border-left: 4px solid #667eea; padding: 15px 20px; border-radius: 0 6px 6px 0;")
+                        p(style="margin: 0; font-size: 14px; color: #555555; font-style: italic;") #{customMessage}
+
+                if welcomeMessage
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                    tr
+                      td(style="background-color: #f8f9fa; border-left: 4px solid #764ba2; padding: 15px 20px; border-radius: 0 6px 6px 0;")
+                        p(style="margin: 0 0 8px 0; font-style: italic; color: #555555; font-size: 14px;") "#{welcomeMessage}"
+                        p(style="margin: 0; color: #6c757d; font-size: 13px;") - #{brideName} & #{groomName}
+
+                //- Event Details Box
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 10px; margin: 25px 0;")
+                  tr
+                    td(style="padding: 20px;")
+                      h3(style="color: #333; margin: 0 0 15px 0; font-size: 16px; font-weight: 600; padding-bottom: 10px; border-bottom: 2px solid #667eea;") Event Details
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(style="padding: 10px 0;")
+                            table(width="100%" cellpadding="0" cellspacing="0")
+                              tr
+                                td(style="background-color: #ffffff; padding: 12px; border-radius: 6px; margin-bottom: 8px;")
+                                  span(style="display: block; color: #6c757d; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;") Event
+                                  span(style="font-weight: 600; color: #333; font-size: 14px;") #{weddingName}
+                        tr
+                          td(style="padding: 5px 0;")
+                            table(width="100%" cellpadding="0" cellspacing="0")
+                              tr
+                                td(width="48%" style="background-color: #ffffff; padding: 12px; border-radius: 6px;")
+                                  span(style="display: block; color: #6c757d; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;") Start Date
+                                  span(style="font-weight: 600; color: #333; font-size: 14px;") #{eventStartDate}
+                                td(width="4%")
+                                td(width="48%" style="background-color: #ffffff; padding: 12px; border-radius: 6px;")
+                                  span(style="display: block; color: #6c757d; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;") End Date
+                                  span(style="font-weight: 600; color: #333; font-size: 14px;") #{eventEndDate}
+                        tr
+                          td(style="padding: 5px 0;")
+                            table(width="100%" cellpadding="0" cellspacing="0")
+                              tr
+                                td(width="48%" style="background-color: #ffffff; padding: 12px; border-radius: 6px;")
+                                  span(style="display: block; color: #6c757d; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;") Hotel
+                                  span(style="font-weight: 600; color: #333; font-size: 14px;") #{hotelName}
+                                td(width="4%")
+                                td(width="48%" style="background-color: #ffffff; padding: 12px; border-radius: 6px;")
+                                  span(style="display: block; color: #6c757d; font-size: 11px; text-transform: uppercase; margin-bottom: 4px;") Location
+                                  span(style="font-weight: 600; color: #333; font-size: 14px;") #{hotelLocation}
+
+                if plusOnesAllowed > 0
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin: 20px 0;")
+                    tr
+                      td(align="center")
+                        table(cellpadding="0" cellspacing="0" style="background-color: #d4edda; border: 1px solid #c3e6cb; border-radius: 8px;")
+                          tr
+                            td(style="padding: 15px 30px; text-align: center;")
+                              span(style="font-size: 24px; font-weight: 700; color: #155724;") +#{plusOnesAllowed}
+                              br
+                              span(style="color: #155724; font-size: 14px;") Guest(s) allowed with your invitation
+
+                //- CTA Button
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;")
+                  tr
+                    td(align="center")
+                      a(href=bookingUrl target="_blank" style="display: inline-block; padding: 14px 40px; font-size: 14px; font-weight: 600; color: #ffffff; text-decoration: none; border-radius: 8px; background-color: #667eea;") Book Your Stay
+
+                p(style="color: #6c757d; font-size: 13px; text-align: center; margin: 20px 0 0 0;") Click the button above to view room options and complete your booking.
+
+                //- Set Password Section (if guest doesn't have a password)
+                if setPasswordUrl && !hasPassword
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                    tr
+                      td(style="background-color: #e8f4fd; border-radius: 10px; padding: 20px; text-align: center;")
+                        p(style="font-size: 20px; margin: 0 0 8px 0; color: #0066cc;") &#x1F4A1;
+                        p(style="color: #0066cc; font-size: 14px; font-weight: 600; margin: 0 0 8px 0;") Quick Tip
+                        p(style="color: #444; font-size: 13px; margin: 0 0 12px 0;") Set up a password now for easy access to your booking later!
+                        a(href=setPasswordUrl target="_blank" style="display: inline-block; padding: 10px 20px; background-color: #0066cc; color: white; text-decoration: none; border-radius: 6px; font-weight: 600; font-size: 13px;") Set Password
+
+                //- Divider
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                  tr
+                    td(style="height: 1px; background-color: #e9ecef;")
+
+                p(style="color: #333333; font-size: 15px; line-height: 1.6; margin: 0 0 15px 0;") We can't wait to celebrate with you!
+
+                p(style="color: #333333; font-size: 15px; margin: 0;") Best regards,
+                  br
+                  | #{brideName} & #{groomName}
+
+            //- Footer
+            tr
+              td(style="background-color: #f8f9fa; padding: 25px 30px; text-align: center; border-top: 1px solid #e9ecef;")
+                p(style="color: #6c757d; font-size: 12px; margin: 0 0 5px 0;") This invitation was sent via #{appName}.
+                p(style="color: #6c757d; font-size: 12px; margin: 0 0 5px 0;") If you have any questions, please contact the couple directly.
+                p(style="color: #6c757d; font-size: 12px; margin: 0;") &copy; #{currentYear} #{appName}. All rights reserved.

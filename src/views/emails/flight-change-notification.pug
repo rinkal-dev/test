@@ -1,0 +1,129 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Flight Details Changed - #{bookingReference}
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- DestaPay Branding Header
+          table(width="600" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;")
+            tr
+              td(align="center" style="padding: 20px 0;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 50px; max-width: 200px;")
+                else
+                  h2(style="margin: 0; font-size: 24px; font-weight: 700; color: #8B5A2B; letter-spacing: 2px;") DESTAPAY
+                  p(style="margin: 5px 0 0 0; font-size: 11px; color: #999; letter-spacing: 1px;") DESTINATION WEDDING BOOKINGS
+
+          //- Email wrapper
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);")
+            //- Header
+            tr
+              if isUrgent
+                td(style="background-color: #f59e0b; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x2708;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Flight Details Changed
+                  div(style="background-color: rgba(255,255,255,0.25); padding: 8px 16px; border-radius: 20px; display: inline-block; margin-top: 15px;")
+                    span(style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #ffffff;") #{priorityLabel}
+              else
+                td(style="background-color: #3b82f6; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x2708;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Flight Details Changed
+                  div(style="background-color: rgba(255,255,255,0.25); padding: 8px 16px; border-radius: 20px; display: inline-block; margin-top: 15px;")
+                    span(style="font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; color: #ffffff;") #{priorityLabel}
+
+            //- Content
+            tr
+              td(style="padding: 30px;")
+                //- Alert Box
+                if isUrgent
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                    tr
+                      td(style="background-color: #fef3c7; border: 1px solid #f59e0b; padding: 15px 20px; border-radius: 8px;")
+                        p(style="margin: 0; color: #92400e; font-size: 14px;")
+                          strong Action Required:
+                          |  Transfer status has been reset to pending. Please review and re-confirm the transfer arrangements.
+                else
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                    tr
+                      td(style="background-color: #dbeafe; border: 1px solid #3b82f6; padding: 15px 20px; border-radius: 8px;")
+                        p(style="margin: 0; color: #1e40af; font-size: 14px;")
+                          strong Notice:
+                          |  A guest has updated their flight details. Please review the changes below.
+
+                //- Guest Information Section
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;")
+                  tr
+                    td(style="padding: 20px;")
+                      h3(style="font-size: 14px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;") Guest Information
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="color: #666; font-size: 14px;") Guest Name
+                          td(align="right" style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{guestName}
+                        tr
+                          td(style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="color: #666; font-size: 14px;") Email
+                          td(align="right" style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{guestEmail}
+                        tr
+                          td(style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="color: #666; font-size: 14px;") Booking Reference
+                          td(align="right" style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{bookingReference}
+                        if weddingGroupName
+                          tr
+                            td(style="padding: 8px 0;")
+                              span(style="color: #666; font-size: 14px;") Wedding Group
+                            td(align="right" style="padding: 8px 0;")
+                              span(style="font-weight: 600; color: #333; font-size: 14px;") #{weddingGroupName}
+
+                //- Changes Section
+                if hasChanges
+                  table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;")
+                    tr
+                      td(style="padding: 20px;")
+                        h3(style="font-size: 14px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #3b82f6; text-transform: uppercase; letter-spacing: 0.5px;") What Changed
+                        table(width="100%" cellpadding="0" cellspacing="0" style="font-size: 13px;")
+                          tr
+                            td(style="background-color: #f3f4f6; padding: 10px; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb;") Field
+                            td(style="background-color: #f3f4f6; padding: 10px; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb;") Previous
+                            td(style="background-color: #f3f4f6; padding: 10px; font-weight: 600; color: #374151; border-bottom: 2px solid #e5e7eb;") New
+                          each change in changes
+                            tr
+                              td(style="padding: 10px; border-bottom: 1px solid #e5e7eb;") #{change.field}
+                              td(style="padding: 10px; border-bottom: 1px solid #e5e7eb; color: #dc2626; text-decoration: line-through;") #{change.oldValue}
+                              td(style="padding: 10px; border-bottom: 1px solid #e5e7eb; color: #16a34a; font-weight: 600;") #{change.newValue}
+
+                //- Status Reset Warning
+                if hasStatusResets
+                  table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin-bottom: 25px;")
+                    tr
+                      td(style="padding: 20px;")
+                        h3(style="font-size: 14px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #dc2626; text-transform: uppercase; letter-spacing: 0.5px;") Transfer Status Reset
+                        table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #fef2f2; border: 1px solid #fecaca; border-radius: 6px;")
+                          tr
+                            td(style="padding: 12px;")
+                              p(style="margin: 0 0 5px 0; color: #dc2626; font-weight: 600; font-size: 13px;") The following transfer statuses have been reset:
+                              each reset in statusResets
+                                p(style="margin: 3px 0; color: #7f1d1d; font-size: 13px;") #{reset}
+
+                //- CTA Button
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;")
+                  tr
+                    td(align="center")
+                      a(href=adminFlightsUrl style="display: inline-block; padding: 14px 28px; background-color: #3b82f6; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px;") Review Flight Details
+
+                //- Timestamp
+                p(style="font-size: 12px; color: #9ca3af; text-align: center; margin: 20px 0 0 0;") Changed at: #{changedAt}
+
+            //- Footer
+            tr
+              td(style="background-color: #f8fafc; padding: 25px 30px; text-align: center; border-top: 1px solid #e5e7eb;")
+                p(style="font-size: 16px; font-weight: 700; color: #3b82f6; margin: 0 0 5px 0;") DestaPay
+                p(style="font-size: 12px; color: #6b7280; margin: 0 0 5px 0;") Wedding & Group Travel Management
+                p(style="font-size: 12px; color: #6b7280; margin: 0;") &copy; #{currentYear} All rights reserved

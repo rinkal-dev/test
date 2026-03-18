@@ -1,0 +1,205 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Booking Fully Confirmed - #{bookingReference}
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    //- Main container table
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- DestaPay Branding Header
+          table(width="600" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;")
+            tr
+              td(align="center" style="padding: 20px 0;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 50px; max-width: 200px;")
+                else
+                  h2(style="margin: 0; font-size: 24px; font-weight: 700; color: #8B5A2B; letter-spacing: 2px;") DESTAPAY
+                  p(style="margin: 5px 0 0 0; font-size: 11px; color: #999; letter-spacing: 1px;") DESTINATION WEDDING BOOKINGS
+
+          //- Email wrapper
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);")
+            //- Header
+            tr
+              td(style="background-color: #28a745; padding: 40px 30px; text-align: center;")
+                p(style="font-size: 48px; margin: 0 0 15px 0; color: #ffffff;") &#x2713;
+                h1(style="margin: 0; font-size: 26px; font-weight: 600; color: #ffffff;") Booking Fully Confirmed!
+                p(style="margin: 10px 0 0 0; font-size: 16px; color: rgba(255,255,255,0.9);") #{coupleName}'s Wedding
+                div(style="background-color: rgba(255,255,255,0.2); padding: 12px 24px; border-radius: 8px; display: inline-block; margin-top: 20px;")
+                  span(style="font-size: 18px; font-weight: 700; letter-spacing: 1px; color: #ffffff;") #{bookingReference}
+
+            //- Content
+            tr
+              td(style="padding: 30px;")
+                p(style="font-size: 18px; margin: 0 0 20px 0; color: #333333;") Dear #{guestName},
+
+                //- Status banner
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                  tr
+                    td(style="background-color: #d4edda; color: #155724; border: 1px solid #c3e6cb; padding: 15px 20px; border-radius: 8px; text-align: center;")
+                      strong Your booking is now fully paid and confirmed!
+                      span  We look forward to welcoming you.
+
+                p(style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0 0 25px 0;") Your final payment for #{coupleName}'s wedding celebration has been received. Below are your booking details.
+
+                //- Stay Details Section
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                  tr
+                    td
+                      h3(style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #28a745;") Stay Details
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(width="50%" style="padding: 12px; background-color: #f8f9fa; border-radius: 6px;")
+                            span(style="display: block; color: #6c757d; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;") Check-in
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{checkInDate}
+                          td(width="10")
+                          td(width="50%" style="padding: 12px; background-color: #f8f9fa; border-radius: 6px;")
+                            span(style="display: block; color: #6c757d; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;") Check-out
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{checkOutDate}
+                        tr
+                          td(colspan="3" style="height: 12px;")
+                        tr
+                          td(width="50%" style="padding: 12px; background-color: #f8f9fa; border-radius: 6px;")
+                            span(style="display: block; color: #6c757d; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;") Nights
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{totalNights} night(s)
+                          td(width="10")
+                          td(width="50%" style="padding: 12px; background-color: #f8f9fa; border-radius: 6px;")
+                            span(style="display: block; color: #6c757d; font-size: 12px; text-transform: uppercase; margin-bottom: 4px;") Guests
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{totalAdults} adult(s)#{totalChildren > 0 ? ', ' + totalChildren + ' child(ren)' : ''}
+
+                //- Invoice Details
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                  tr
+                    td
+                      h3(style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #28a745;") Invoice Details
+                      table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px;")
+                        tr
+                          td(style="padding: 15px;")
+                            table(width="100%" cellpadding="0" cellspacing="0")
+                              tr
+                                td(style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                                  span(style="color: #6c757d;") Invoice Number
+                                td(align="right" style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                                  span(style="font-weight: 600; color: #333;") #{invoiceNumber}
+                              tr
+                                td(style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                                  span(style="color: #6c757d;") Invoice Type
+                                td(align="right" style="padding: 8px 0; border-bottom: 1px solid #e9ecef;")
+                                  span(style="font-weight: 600; color: #333;") Final Payment
+                              tr
+                                td(style="padding: 8px 0;")
+                                  span(style="color: #6c757d;") Payment Date
+                                td(align="right" style="padding: 8px 0;")
+                                  span(style="font-weight: 600; color: #333;") #{paymentDate}
+
+                //- Payment Summary
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #d4edda; border-radius: 10px; padding: 20px; margin-bottom: 25px;")
+                  tr
+                    td(style="padding: 20px;")
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(style="padding: 8px 0; border-bottom: 1px solid rgba(21, 87, 36, 0.2);")
+                            span(style="color: #155724;") Final Payment Amount
+                          td(align="right" style="padding: 8px 0; border-bottom: 1px solid rgba(21, 87, 36, 0.2);")
+                            span(style="font-weight: 600; color: #155724;") #{currency} #{finalPaymentAmount}
+                        tr
+                          td(style="padding: 8px 0; border-bottom: 1px solid rgba(21, 87, 36, 0.2);")
+                            span(style="color: #155724;") Deposit Paid Earlier
+                          td(align="right" style="padding: 8px 0; border-bottom: 1px solid rgba(21, 87, 36, 0.2);")
+                            span(style="font-weight: 600; color: #155724;") #{currency} #{depositAmount}
+                        tr
+                          td(style="padding: 12px 0 8px 0;")
+                            span(style="color: #155724; font-size: 16px; font-weight: 600;") Total Paid
+                          td(align="right" style="padding: 12px 0 8px 0;")
+                            span(style="font-size: 20px; font-weight: 700; color: #155724;") #{currency} #{totalAmount}
+                        tr
+                          td(style="padding: 8px 0;")
+                            span(style="color: #155724;") Balance Due
+                          td(align="right" style="padding: 8px 0;")
+                            span(style="font-weight: 600; color: #155724;") #{currency} 0.00
+
+                //- Hotel Info
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 8px; margin: 25px 0;")
+                  tr
+                    td(style="padding: 20px;")
+                      h4(style="margin: 0 0 15px 0; color: #333;") #{hotelName}
+                      p(style="margin: 5px 0; color: #6c757d;") #{hotelLocation}
+                      if hotelAddress
+                        p(style="margin: 5px 0; color: #6c757d;") #{hotelAddress}
+
+                //- Contact Information Section
+                if hasContacts
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 25px;")
+                    tr
+                      td
+                        h3(style="font-size: 16px; font-weight: 600; color: #333; margin: 0 0 15px 0; padding-bottom: 8px; border-bottom: 2px solid #28a745;") Contact Information
+                        p(style="color: #6c757d; font-size: 13px; margin: 0 0 15px 0;") Need assistance? Reach out to the couple or hotel directly.
+
+                        //- Bride & Groom Contacts
+                        if brideEmail || bridePhone || groomEmail || groomPhone
+                          table(width="100%" cellpadding="0" cellspacing="0" style="margin-bottom: 12px;")
+                            tr
+                              //- Bride Contact
+                              if brideEmail || bridePhone
+                                td(width="48%" style="padding: 15px; background-color: #fdf2f8; border-radius: 8px; vertical-align: top;")
+                                  span(style="display: block; color: #be185d; font-size: 11px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px;") Bride
+                                  span(style="display: block; font-weight: 600; color: #333; margin-bottom: 8px;") #{brideName}
+                                  if brideEmail
+                                    a(href="mailto:" + brideEmail style="display: block; color: #667eea; font-size: 13px; text-decoration: none; margin-bottom: 4px;") #{brideEmail}
+                                  if bridePhone
+                                    a(href="tel:" + bridePhone style="display: block; color: #667eea; font-size: 13px; text-decoration: none;") #{bridePhone}
+                              if (brideEmail || bridePhone) && (groomEmail || groomPhone)
+                                td(width="4%")
+                              //- Groom Contact
+                              if groomEmail || groomPhone
+                                td(width="48%" style="padding: 15px; background-color: #eff6ff; border-radius: 8px; vertical-align: top;")
+                                  span(style="display: block; color: #1d4ed8; font-size: 11px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px;") Groom
+                                  span(style="display: block; font-weight: 600; color: #333; margin-bottom: 8px;") #{groomName}
+                                  if groomEmail
+                                    a(href="mailto:" + groomEmail style="display: block; color: #667eea; font-size: 13px; text-decoration: none; margin-bottom: 4px;") #{groomEmail}
+                                  if groomPhone
+                                    a(href="tel:" + groomPhone style="display: block; color: #667eea; font-size: 13px; text-decoration: none;") #{groomPhone}
+
+                        //- Hotel Contact
+                        if hotelContactEmail || hotelContactPhone
+                          table(width="100%" cellpadding="0" cellspacing="0")
+                            tr
+                              td(style="padding: 15px; background-color: #f8f9fa; border-radius: 8px;")
+                                span(style="display: block; color: #28a745; font-size: 11px; text-transform: uppercase; font-weight: 700; margin-bottom: 8px;") Hotel Reservations
+                                if hotelContactName
+                                  span(style="display: block; font-weight: 600; color: #333; margin-bottom: 8px;") #{hotelContactName}
+                                table(width="100%" cellpadding="0" cellspacing="0")
+                                  tr
+                                    if hotelContactEmail
+                                      td(style="vertical-align: middle;")
+                                        a(href="mailto:" + hotelContactEmail style="color: #667eea; font-size: 13px; text-decoration: none;") #{hotelContactEmail}
+                                    if hotelContactPhone
+                                      td(align="right" style="vertical-align: middle;")
+                                        a(href="tel:" + hotelContactPhone style="color: #667eea; font-size: 13px; text-decoration: none;") #{hotelContactPhone}
+
+                //- CTA Buttons
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;")
+                  tr
+                    td(align="center")
+                      a(href=viewBookingUrl style="display: inline-block; padding: 14px 28px; background-color: #28a745; color: #ffffff; text-decoration: none; border-radius: 8px; font-weight: 600; font-size: 14px; margin: 8px;") View My Booking
+
+                //- Divider
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                  tr
+                    td(style="height: 1px; background-color: #e9ecef;")
+
+                p(style="color: #555; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;") If you have any questions about your booking, please don't hesitate to contact us. We look forward to celebrating with you!
+
+                p(style="color: #555; font-size: 14px; margin: 0;") Best regards,
+                  br
+                  | The #{appName} Team
+
+            //- Footer
+            tr
+              td(style="background-color: #f8f9fa; padding: 25px 30px; text-align: center; border-top: 1px solid #e9ecef;")
+                p(style="margin: 5px 0; color: #6c757d; font-size: 12px;") This confirmation was sent by #{appName}.
+                p(style="margin: 5px 0;")
+                  a(href=viewBookingUrl style="color: #28a745; font-size: 12px;") Manage Your Booking
+                p(style="margin: 5px 0; color: #6c757d; font-size: 12px;") &copy; #{currentYear} #{appName}. All rights reserved.

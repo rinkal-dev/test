@@ -1,0 +1,87 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Account Updated - DESTAPAY Admin Portal
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- Email wrapper
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 0; overflow: hidden; border: 1px solid #e5e5e5;")
+            //- Header
+            tr
+              td(style="background-color: #1a1a1a; padding: 30px 40px; text-align: center;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 40px; max-width: 180px;")
+                else
+                  p(style="color: #ffffff; font-size: 18px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; margin: 0;") D E S T A P A Y
+                div(style="width: 40px; height: 2px; background-color: #d4af37; margin: 15px auto 0;")
+
+            //- Content
+            tr
+              td(style="padding: 40px;")
+                p(style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin: 0 0 20px 0;") Hello, #{name}!
+
+                p(style="color: #555; font-size: 15px; margin: 0 0 20px 0; line-height: 1.8;") Your admin account details have been updated on the DESTAPAY Admin Portal. Below are your current account details.
+
+                //- Account Information Box
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border: 1px solid #e5e5e5; margin: 25px 0;")
+                  tr
+                    td(style="padding: 20px 25px;")
+                      p(style="font-size: 14px; font-weight: 600; color: #1a1a1a; margin: 0 0 15px 0; text-transform: uppercase; letter-spacing: 0.05em;") Account Information
+
+                      //- Name
+                      table(width="100%" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #e5e5e5;")
+                        tr
+                          td(style="padding: 10px 0;")
+                            p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;") Name
+                            p(style="font-size: 15px; color: #1a1a1a; margin: 3px 0 0 0;") #{name}
+
+                      //- Email
+                      table(width="100%" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #e5e5e5;")
+                        tr
+                          td(style="padding: 10px 0;")
+                            p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;") Email Address
+                            p(style="font-size: 15px; color: #1a1a1a; margin: 3px 0 0 0;") #{email}
+
+                      //- Role
+                      if role
+                        table(width="100%" cellpadding="0" cellspacing="0" style="border-bottom: 1px solid #e5e5e5;")
+                          tr
+                            td(style="padding: 10px 0;")
+                              p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;") Assigned Role
+                              span(style="display: inline-block; background-color: #e9ecef; padding: 5px 12px; border-radius: 20px; font-size: 13px; color: #495057; margin-top: 5px;") #{role}
+
+                      //- Status
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(style="padding: 10px 0;")
+                            p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0;") Account Status
+                            if isActive
+                              p(style="font-size: 15px; color: #28a745; font-weight: 600; margin: 3px 0 0 0;") Active
+                            else
+                              p(style="font-size: 15px; color: #dc3545; font-weight: 600; margin: 3px 0 0 0;") Inactive
+
+                //- CTA Button
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;")
+                  tr
+                    td(align="center")
+                      a(href=loginUrl target="_blank" style="display: inline-block; padding: 14px 40px; background-color: #1a1a1a; color: #ffffff; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;") Go to Admin Portal
+
+                //- Info Notice
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                  tr
+                    td(style="background-color: #e7f3ff; border: 1px solid #b6d4fe; padding: 15px 20px;")
+                      p(style="margin: 0; font-size: 13px; color: #084298;")
+                        strong Note:
+                        |  If you did not request these changes or notice any unauthorized activity, please contact the administrator immediately.
+
+            //- Footer
+            tr
+              td(style="background-color: #f8f9fa; padding: 25px 40px; border-top: 1px solid #e5e5e5;")
+                p(style="font-size: 12px; color: #888; margin: 0;") This email was sent by
+                  span(style="font-weight: 700; color: #1a1a1a; letter-spacing: 0.1em;")  DESTAPAY
+                  |  Admin Portal.
+                p(style="font-size: 12px; color: #888; margin: 5px 0 0 0;") Please do not reply to this email.

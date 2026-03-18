@@ -1,0 +1,106 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Refund Update - #{bookingReference}
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- DestaPay Branding Header
+          table(width="600" cellpadding="0" cellspacing="0" style="margin-bottom: 10px;")
+            tr
+              td(align="center" style="padding: 20px 0;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 50px; max-width: 200px;")
+                else
+                  h2(style="margin: 0; font-size: 24px; font-weight: 700; color: #8B5A2B; letter-spacing: 2px;") DESTAPAY
+                  p(style="margin: 5px 0 0 0; font-size: 11px; color: #999; letter-spacing: 1px;") DESTINATION WEDDING BOOKINGS
+
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 12px; overflow: hidden; box-shadow: 0 4px 12px rgba(0,0,0,0.1);")
+            //- Header - Changes based on status
+            if status === 'approved'
+              tr
+                td(style="background-color: #10b981; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x2705;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Refund Approved
+                  p(style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 14px;") Your refund request has been approved
+            else if status === 'denied'
+              tr
+                td(style="background-color: #ef4444; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x274C;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Refund Request Denied
+                  p(style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 14px;") We were unable to approve your refund
+            else if status === 'processed'
+              tr
+                td(style="background-color: #667eea; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x1F4B0;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Refund Processed
+                  p(style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 14px;") Your refund has been sent to your payment method
+            else
+              tr
+                td(style="background-color: #f59e0b; padding: 30px; text-align: center;")
+                  p(style="font-size: 40px; margin: 0 0 10px 0; color: #ffffff;") &#x1F4CB;
+                  h1(style="color: #ffffff; margin: 0; font-size: 22px; font-weight: 600;") Refund Update
+                  p(style="color: rgba(255,255,255,0.9); margin: 10px 0 0 0; font-size: 14px;") Status: #{status}
+
+            //- Body
+            tr
+              td(style="padding: 30px;")
+                p(style="color: #333333; font-size: 16px; margin: 0 0 20px 0;") Dear #{guestName},
+
+                if status === 'approved'
+                  p(style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;") Good news! Your refund request for booking <strong>#{bookingReference}</strong> has been approved. The refund will be processed shortly.
+                else if status === 'denied'
+                  p(style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;") We regret to inform you that your refund request for booking <strong>#{bookingReference}</strong> has been denied.
+                else if status === 'processed'
+                  p(style="color: #555555; font-size: 14px; line-height: 1.6; margin: 0 0 20px 0;") Great news! Your refund for booking <strong>#{bookingReference}</strong> has been processed and sent to your original payment method.
+
+                //- Refund Details Box
+                if status === 'approved' || status === 'processed'
+                  table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #d1fae5; border: 1px solid #6ee7b7; border-radius: 10px; margin: 20px 0;")
+                    tr
+                      td(style="padding: 20px; text-align: center;")
+                        p(style="margin: 0 0 5px 0; color: #065f46; font-size: 12px; text-transform: uppercase;") Refund Amount
+                        p(style="margin: 0; font-size: 28px; font-weight: 700; color: #065f46;") $#{refundAmount}
+                        if status === 'processed'
+                          p(style="margin: 8px 0 0 0; color: #047857; font-size: 13px;") Please allow 5-10 business days for the refund to appear in your account.
+
+                //- Denial Reason (if denied)
+                if status === 'denied' && denialReason
+                  table(width="100%" cellpadding="0" cellspacing="0" style="margin: 20px 0;")
+                    tr
+                      td(style="background-color: #fef2f2; border-left: 4px solid #ef4444; padding: 15px 20px; border-radius: 0 6px 6px 0;")
+                        p(style="margin: 0 0 5px 0; font-size: 12px; color: #991b1b; text-transform: uppercase;") Reason
+                        p(style="margin: 0; font-size: 14px; color: #7f1d1d; line-height: 1.5;") #{denialReason}
+
+                //- Booking Details
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border-radius: 10px; margin: 20px 0;")
+                  tr
+                    td(style="padding: 20px;")
+                      h3(style="color: #333; margin: 0 0 15px 0; font-size: 14px; font-weight: 600; padding-bottom: 10px; border-bottom: 2px solid #e5e7eb;") Booking Details
+                      table(width="100%" cellpadding="0" cellspacing="0")
+                        tr
+                          td(style="padding: 8px 0;")
+                            span(style="color: #6c757d; font-size: 12px;") Booking Reference
+                            br
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{bookingReference}
+                        tr
+                          td(style="padding: 8px 0;")
+                            span(style="color: #6c757d; font-size: 12px;") Wedding
+                            br
+                            span(style="font-weight: 600; color: #333; font-size: 14px;") #{weddingName}
+
+                //- Contact Info
+                if status === 'denied'
+                  p(style="color: #555555; font-size: 14px; line-height: 1.6; margin: 20px 0;") If you have questions about this decision, please contact our support team.
+
+                //- Footer Note
+                p(style="color: #6c757d; font-size: 12px; text-align: center; margin: 25px 0 0 0; padding-top: 20px; border-top: 1px solid #e9ecef;") Thank you for your understanding.
+
+            //- Footer
+            tr
+              td(style="background-color: #f8f9fa; padding: 20px 30px; text-align: center; border-top: 1px solid #e9ecef;")
+                p(style="margin: 0; color: #6c757d; font-size: 12px;") This is an automated notification from DestaPay.
+                p(style="margin: 5px 0 0 0; color: #6c757d; font-size: 11px;") If you have any questions, please contact our support team.

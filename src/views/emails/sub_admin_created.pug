@@ -1,0 +1,61 @@
+doctype html
+html
+  head
+    meta(charset="utf-8")
+    meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    title Welcome to DESTAPAY Admin Portal
+  body(style="margin: 0; padding: 0; background-color: #f5f5f5; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;")
+    table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f5f5f5; padding: 40px 20px;")
+      tr
+        td(align="center")
+          //- Email wrapper
+          table(width="600" cellpadding="0" cellspacing="0" style="background-color: #ffffff; border-radius: 0; overflow: hidden; border: 1px solid #e5e5e5;")
+            //- Header
+            tr
+              td(style="background-color: #1a1a1a; padding: 30px 40px; text-align: center;")
+                if logoUrl
+                  img(src=logoUrl alt="DestaPay" style="max-height: 40px; max-width: 180px;")
+                else
+                  p(style="color: #ffffff; font-size: 18px; font-weight: 300; letter-spacing: 0.2em; text-transform: uppercase; margin: 0;") D E S T A P A Y
+                div(style="width: 40px; height: 2px; background-color: #d4af37; margin: 15px auto 0;")
+
+            //- Content
+            tr
+              td(style="padding: 40px;")
+                p(style="font-size: 24px; font-weight: 600; color: #1a1a1a; margin: 0 0 20px 0;") Welcome, #{name}!
+
+                p(style="color: #555; font-size: 15px; margin: 0 0 20px 0; line-height: 1.8;") Your admin account has been created on the DESTAPAY Admin Portal. You can now access the admin panel using the credentials below.
+
+                //- Credentials Box
+                table(width="100%" cellpadding="0" cellspacing="0" style="background-color: #f8f9fa; border: 1px solid #e5e5e5; margin: 25px 0;")
+                  tr
+                    td(style="padding: 20px 25px;")
+                      p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 5px 0;") Email Address
+                      p(style="font-size: 16px; color: #1a1a1a; font-weight: 600; margin: 0 0 15px 0;") #{email}
+                      p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 5px 0;") Temporary Password
+                      p(style="font-size: 16px; color: #1a1a1a; font-weight: 600; margin: 0 0 15px 0;") #{password}
+                      if role
+                        p(style="font-size: 12px; color: #888; text-transform: uppercase; letter-spacing: 0.1em; margin: 0 0 5px 0;") Assigned Role
+                        span(style="display: inline-block; background-color: #e9ecef; padding: 5px 12px; border-radius: 20px; font-size: 13px; color: #495057;") #{role}
+
+                //- CTA Button
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 30px 0;")
+                  tr
+                    td(align="center")
+                      a(href=loginUrl target="_blank" style="display: inline-block; padding: 14px 40px; background-color: #1a1a1a; color: #ffffff; text-decoration: none; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase;") Login to Admin Portal
+
+                //- Warning Notice
+                table(width="100%" cellpadding="0" cellspacing="0" style="margin: 25px 0;")
+                  tr
+                    td(style="background-color: #fff3cd; border: 1px solid #ffc107; padding: 15px 20px;")
+                      p(style="margin: 0; font-size: 13px; color: #856404;")
+                        strong Important:
+                        |  For security reasons, please change your password immediately after your first login.
+
+            //- Footer
+            tr
+              td(style="background-color: #f8f9fa; padding: 25px 40px; border-top: 1px solid #e5e5e5;")
+                p(style="font-size: 12px; color: #888; margin: 0;") This email was sent by
+                  span(style="font-weight: 700; color: #1a1a1a; letter-spacing: 0.1em;")  DESTAPAY
+                  |  Admin Portal.
+                p(style="font-size: 12px; color: #888; margin: 5px 0 0 0;") Please do not reply to this email. If you did not expect this account, please contact the administrator.
