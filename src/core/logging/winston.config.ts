@@ -12,6 +12,9 @@ import { getEnvironmentData } from '../../helpers/general';
 
 const logDir = process.cwd() + '/logs';
 
+// Check if running on Vercel (read-only filesystem)
+const isVercel = !!process.env.VERCEL;
+
 // Custom format for log entries
 const customFormat = winston.format.combine(
   winston.format.timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }),
@@ -35,36 +38,52 @@ const consoleFormat = winston.format.combine(
   }),
 );
 
-// Error file transport (rotated daily)
-const errorFileTransport = new winston.transports.DailyRotateFile({
-  filename: `${logDir}/error-%DATE%.log`,
-  datePattern: 'YYYY-MM-DD',
-  level: 'error',
-  maxSize: '20m',
-  maxFiles: '30d',
-  format: customFormat,
-});
+// File transports — only created when NOT on Vercel (read-only filesystem)
+let errorFileTransport: winston.transport;
+let combinedFileTransport: winston.transport;
+let requestFileTransport: winston.transport;
 
-// Combined file transport (all logs)
-const combinedFileTransport = new winston.transports.DailyRotateFile({
-  filename: `${logDir}/combined-%DATE%.log`,
-  datePattern: 'YYYY-MM-DD',
-  maxSize: '20m',
-  maxFiles: '14d',
-  format: customFormat,
-});
+if (!isVercel) {
+  // Error file transport (rotated daily)
+  errorFileTransport = new winston.transports.DailyRotateFile({
+    filename: `${logDir}/error-%DATE%.log`,
+    datePattern: 'YYYY-MM-DD',
+    level: 'error',
+    maxSize: '20m',
+    maxFiles: '30d',
+    format: customFormat,
+  });
 
-// HTTP/API request logs
-const requestFileTransport = new winston.transports.DailyRotateFile({
-  filename: `${logDir}/requests-%DATE%.log`,
-  datePattern: 'YYYY-MM-DD',
-  maxSize: '20m',
-  maxFiles: '7d',
-  format: customFormat,
-});
+  // Combined file transport (all logs)
+  combinedFileTransport = new winston.transports.DailyRotateFile({
+    filename: `${logDir}/combined-%DATE%.log`,
+    datePattern: 'YYYY-MM-DD',
+    maxSize: '20m',
+    maxFiles: '14d',
+    format: customFormat,
+  });
+
+  // HTTP/API request logs
+  requestFileTransport = new winston.transports.DailyRotateFile({
+    filename: `${logDir}/requests-%DATE%.log`,
+    datePattern: 'YYYY-MM-DD',
+    maxSize: '20m',
+    maxFiles: '7d',
+    format: customFormat,
+  });
+}
 
 // Create transports array based on environment
 const getTransports = () => {
+  // Vercel has a read-only filesystem — use only Console transport
+  if (isVercel) {
+    return [
+      new winston.transports.Console({
+        format: customFormat,
+      }),
+    ];
+  }
+
   const transports: winston.transport[] = [
     errorFileTransport,
     combinedFileTransport,
@@ -105,7 +124,9 @@ export const requestLogger = winston.createLogger({
     environment: getEnvironmentData('NODE_ENV') || 'development',
     type: 'request',
   },
-  transports: [requestFileTransport],
+  transports: isVercel
+    ? [new winston.transports.Console({ format: customFormat })]
+    : [requestFileTransport],
 });
 
 // Export log directory for the viewer
